@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F05%2FMath-HD-Wallpapers.jpg&f=1&nofb=1&ipt=d3ffcc6036ab0b4a2a5efa3dcb6b2c0265ef699218e7d4b68dbc74b2aa3624ed&ipo=images');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        #calculator {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input, select, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <h1>Calculadora</h1>
+        <label for="num1">Número 1:</label>
+        <input type="number" id="num1" required>
+        <br>
+        <label for="num2">Número 2:</label>
+        <input type="number" id="num2" required>
+        <br>
+        <label for="operacao">Selecione a operação:</label>
+        <select id="operacao">
+            <option value="adicao">Adição</option>
+            <option value="subtracao">Subtração</option>
+            <option value="multiplicacao">Multiplicação</option>
+            <option value="divisao">Divisão</option>
+        </select>
+        <br>
+        <button onclick="calcular()">Calcular</button>
+        <p id="resultado"></p>
+    </div>
+
+    <script>
+        function calcular() {
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var operacao = document.getElementById('operacao').value;
+            var resultado;
+
+            switch (operacao) {
+                case 'adicao':
+                    resultado = num1 + num2;
+                    break;
+                case 'subtracao':
+                    resultado = num1 - num2;
+                    break;
+                case 'multiplicacao':
+                    resultado = num1 * num2;
+                    break;
+                case 'divisao':
+                    resultado = num2 !== 0 ? num1 / num2 : 'Erro: Divisão por zero';
+                    break;
+                default:
+                    resultado = 'Operação inválida';
+                    break;
+            }
+
+            document.getElementById('resultado').innerHTML = 'Resultado: ' + resultado;
+        }
+    </script>
+</body>
+</html>
